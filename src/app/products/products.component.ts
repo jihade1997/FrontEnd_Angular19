@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-products',
@@ -9,19 +10,24 @@ import { RouterLink } from '@angular/router';
   standalone: true
 })
 export class ProductsComponent implements OnInit {
-handleDelete(product : any): void {
-
-this.products = this.products.filter((p : any): boolean => p.id != product.id);}
   products : any;
+  constructor(private productsService: ProductService){
+
+  }
   ngOnInit(): void {
-    this.products = [
-      {id:1,name:"Computer",price:2300,selected: true},
-      {id:2,name:"Printer",price:1200,selected: false},
-      {id:3,name:"Smart Phone",price:1100,selected: true}
-    ]
+    this.getAllProducts();
   }
-  constructor(){
-
+  getAllProducts(){
+    this.products = this.productsService.getAllProducts();
+  }
+  handleDelete(product : any): void {
+  let v = confirm(" are you sure you want to delete this product");
+  if (v== true){
+    this.productsService.deleteProduct(product);
+    this.getAllProducts();
+  }
   }
 
+  
+ 
 }
