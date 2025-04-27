@@ -5,8 +5,7 @@ import { RouterLink } from '@angular/router';
   selector: 'app-home',
   imports: [],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
-  standalone: true
+  styleUrl: './home.component.scss'
 })
 export class HomeComponent {
 
