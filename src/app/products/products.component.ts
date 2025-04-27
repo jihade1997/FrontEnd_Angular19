@@ -6,8 +6,7 @@ import { ProductService } from '../services/product.service';
   selector: 'app-products',
   imports: [],
   templateUrl: './products.component.html',
-  styleUrl: './products.component.scss',
-  standalone: true
+  styleUrl: './products.component.scss'
 })
 export class ProductsComponent implements OnInit {
   products : any;
