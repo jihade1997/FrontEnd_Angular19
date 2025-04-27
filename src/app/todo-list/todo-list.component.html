@@ -1,0 +1,51 @@
+<div>
+    <h1>📝 Todo List (Angular 19 + Signals)</h1>
+    
+    <input [(ngModel)]="newTodo" placeholder="Add todo..." />
+    <button (click)="addTodo()">Add</button>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Task</th>
+            </tr>
+        </thead>
+        @if (todos()) {
+            <tbody>
+                <!--the old template before Angular 17-->
+                <!-- meme chose pour nfIf-->
+                <!-- <tr *ngFor="let p of products">
+                    <td>{{p.id}}</td>
+                    <td>{{p.name}}</td>
+                    <td>{{p.price}}</td>
+                    <td>{{p.selected}}</td>
+                </tr> -->
+                <!--the new moteur de template after Angular 17-->
+                
+                @for (todo of todos(); track todo) {
+                    <tr>
+                        <td>
+                            <button (click)="deleteTodo(todo)" class="btn btn-outline-danger">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </td>
+                        <td>{{ todo }}</td>
+                    </tr>
+                }
+                @empty {
+                    <li>No todos yet!</li>
+                  }
+            </tbody>
+        }
+       
+    </table>
+    
+
+    <hr />
+
+    <h2>📊 Chart (Deferred)</h2>
+    @defer {
+      <app-heavy-chart></app-heavy-chart>
+    } @placeholder {
+      <p>Loading chart...</p>
+    }
+  </div>
