@@ -1,0 +1,32 @@
+<div class="p-3">
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Selected</th>
+                </tr>
+            </thead>
+            <body>
+                <!--the old template before Angular 17-->
+                <!-- <tr *ngFor="let p of products">
+                    <td>{{p.id}}</td>
+                    <td>{{p.name}}</td>
+                    <td>{{p.price}}</td>
+                    <td>{{p.selected}}</td>
+                </tr> -->
+                <!--the new moteur de template after Angular 17-->
+                @for (p of products; track p) {
+                    <tr>
+                        <td>{{p.id}}</td>
+                        <td>{{p.name}}</td>
+                        <td>{{p.price}}</td>
+                        <td>{{p.selected}}</td>
+                    </tr>
+                }
+            </body>
+        </table>
+    </div>
+</div>
